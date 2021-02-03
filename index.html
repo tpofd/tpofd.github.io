@@ -586,25 +586,24 @@
 						<div class="col-md-7 col-md-push-1">
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box" data-animate-effect="fadeInRight">
-									<form action="">
+									<form action="send.php" method="POST">
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Имя">
+											<input type="text" class="form-control" name="name" placeholder="Имя">
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Email">
+											<input type="text" class="form-control" name="email" placeholder="Email">
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Тема">
+											<input type="text" class="form-control" name="theme" placeholder="Тема">
 										</div>
 										<div class="form-group">
-											<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="Сообщение"></textarea>
+											<textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Сообщение"></textarea>
 										</div>
 										<div class="form-group">
 											<input type="submit" class="btn btn-primary btn-send-message" value="Отправить сообщение">
 										</div>
 									</form>
 								</div>
-								
 							</div>
 						</div>
 					</div>
