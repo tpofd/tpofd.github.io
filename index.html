@@ -67,6 +67,24 @@
       }
     }
   </style>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){
+          (m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],
+          k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+      ym(12345678, "init", {
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true,
+          webvisor:true
+      });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/71439325" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 </head>
 <body>
   <header>
@@ -100,7 +118,6 @@
     </ul>
 
     <h2>🌟 Самое читаемое</h2>
-    <p>Посты, которые чаще всего сохраняют и пересылают:</p>
     <ul>
       <li><a href="https://t.me/givemeagold/199" target="_blank">🔥 Устала. Сгорела. Решила лепить себя заново — буквально</a></li>
       <li><a href="https://t.me/givemeagold/209" target="_blank">📈 Аналитическая зрелость ≠ крутой и гибкий дашборд в Tableau со всеми фильтрами</a></li>
@@ -109,10 +126,9 @@
     </ul>
 
     <h2>🎁 Полезные материалы</h2>
-    <p>Иногда я выкладываю шаблоны и инструменты, которые сама использую в работе. Они не всегда попадают в Telegram, но доступны здесь:</p>
     <ul>
       <li>
-        <a href="https://miro.com/app/board/uXjVI2dOqmQ=/?share_link_id=705288048981" target="_blank">
+        <a href="https://miro.com/app/board/uXjVI2dOqmQ=/?share_link_id=705288048981" target="_blank" onclick="ym(12345678, 'reachGoal', 'download_materials')">
           🧩 Пример карты аналитических событий в Miro — бери как шаблон
         </a>
       </li>
@@ -120,8 +136,7 @@
     <p>Подпишись на <a href="https://t.me/givemeagold" target="_blank">@givemeagold</a>, если хочешь быть в курсе новых шаблонов, чеклистов и фреймворков.</p>
 
     <h2>📄 Скачать резюме</h2>
-    <p>Хочешь глянуть, что я делала раньше и чем могу быть полезна? Вот резюме в PDF:</p>
-    <a href="/resume_gisina.pdf" download style="display:inline-block; margin-top:1rem; padding:0.6rem 1.2rem; background:#1C1A41; color:#F3ECE2; border-radius:6px; font-weight:600;">Скачать резюме</a>
+    <a href="/resume_gisina.pdf" download onclick="ym(12345678, 'reachGoal', 'download_resume')" style="display:inline-block; margin-top:1rem; padding:0.6rem 1.2rem; background:#1C1A41; color:#F3ECE2; border-radius:6px; font-weight:600;">Скачать резюме</a>
   </main>
 
   <footer>
