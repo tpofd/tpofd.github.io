@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="ru" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Умный автогид для путешествий</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease-out;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full w-full overflow-auto">
+  <div id="app" class="h-full w-full"><!-- Hero Section -->
+   <section id="hero" class="w-full min-h-screen flex items-center justify-center px-6 py-20 relative overflow-hidden"><!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden opacity-10">
+     <div class="absolute top-20 left-10 text-8xl float-animation">
+      🏖️
+     </div>
+     <div class="absolute top-40 right-20 text-7xl float-animation" style="animation-delay: 0.5s">
+      🗼
+     </div>
+     <div class="absolute bottom-32 left-1/4 text-6xl float-animation" style="animation-delay: 1s">
+      🎨
+     </div>
+     <div class="absolute bottom-20 right-1/3 text-7xl float-animation" style="animation-delay: 1.5s">
+      🏝️
+     </div>
+     <div class="absolute top-1/3 right-10 text-6xl float-animation" style="animation-delay: 0.8s">
+      🎭
+     </div>
+    </div>
+    <div class="max-w-7xl w-full mx-auto relative z-10">
+     <div class="text-center mb-16"><!-- Logo/Icon -->
+      <div class="mb-8 fade-in-up">
+       <div class="inline-flex items-center justify-center w-24 h-24 rounded-3xl shadow-xl mb-6" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><span class="text-5xl">✈️</span>
+       </div>
+      </div><!-- Main Heading -->
+      <h1 id="hero-title" class="text-6xl md:text-8xl font-bold mb-8 fade-in-up leading-tight"><span class="gradient-text">Собери идеальное путешествие</span></h1><!-- Subtitle with emphasis -->
+      <p id="hero-subtitle" class="text-2xl md:text-4xl mb-6 fade-in-up font-semibold opacity-90">Маршрут, бронь и советы — за 2 минуты. Без нервов и подписок</p>
+      <p class="text-xl md:text-2xl mb-12 fade-in-up opacity-70 max-w-3xl mx-auto">Один сервис вместо десятков вкладок. Персональный автогид под твои интересы и бюджет, готовый к брони</p><!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 fade-in-up"><button id="cta-button" class="px-10 py-5 rounded-full text-xl font-bold transition-all transform hover:scale-105 shadow-2xl"> Попробовать бесплатно </button> <button id="demo-button" class="px-10 py-5 rounded-full text-xl font-bold transition-all transform hover:scale-105 border-3 bg-transparent"> Смотреть демо → </button>
+      </div><!-- Trust indicators -->
+      <div class="flex flex-wrap justify-center gap-8 text-sm opacity-60 fade-in-up">
+       <div class="flex items-center gap-2"><span class="text-2xl">✓</span> <span>Без карты на старте</span>
+       </div>
+       <div class="flex items-center gap-2"><span class="text-2xl">✓</span> <span>1 день бесплатно</span>
+       </div>
+       <div class="flex items-center gap-2"><span class="text-2xl">✓</span> <span>Готово за 2 минуты</span>
+       </div>
+      </div>
+     </div><!-- Visual Product Preview -->
+     <div class="relative max-w-5xl mx-auto fade-in-up">
+      <div class="relative"><!-- Main app mockup -->
+       <div class="mx-auto w-full max-w-4xl rounded-3xl shadow-2xl p-8" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);">
+        <div class="grid md:grid-cols-3 gap-6"><!-- Card 1 -->
+         <div class="rounded-2xl shadow-lg p-6 transform hover:scale-105 transition-transform">
+          <div class="text-5xl mb-4">
+           🎯
+          </div>
+          <h3 class="text-xl font-bold mb-3">Расскажи, что любишь</h3>
+          <p class="opacity-70 text-sm mb-4">Архитектура, гастрономия, природа — подстроим под тебя</p>
+          <div class="space-y-2">
+           <div class="h-3 rounded-full w-full opacity-30"></div>
+           <div class="h-3 rounded-full w-3/4 opacity-20"></div>
+           <div class="h-3 rounded-full w-1/2 opacity-10"></div>
+          </div>
+         </div><!-- Card 2 -->
+         <div class="rounded-2xl shadow-lg p-6 transform hover:scale-105 transition-transform">
+          <div class="text-5xl mb-4">
+           🗺️
+          </div>
+          <h3 class="text-xl font-bold mb-3">Получай план</h3>
+          <p class="opacity-70 text-sm mb-4">По дням, с ресторанами, таймингом и картой</p>
+          <div class="space-y-2">
+           <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full opacity-30"></div>
+            <div class="h-2 rounded-full flex-1 opacity-30"></div>
+           </div>
+           <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full opacity-20"></div>
+            <div class="h-2 rounded-full flex-1 opacity-20"></div>
+           </div>
+           <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full opacity-10"></div>
+            <div class="h-2 rounded-full flex-1 opacity-10"></div>
+           </div>
+          </div>
+         </div><!-- Card 3 -->
+         <div class="rounded-2xl shadow-lg p-6 transform hover:scale-105 transition-transform">
+          <div class="text-5xl mb-4">
+           ⚡
+          </div>
+          <h3 class="text-xl font-bold mb-3">Бронируй за минуту</h3>
+          <p class="opacity-70 text-sm mb-4">Отель, перелёт, трансфер — одним кликом</p>
+          <div class="space-y-3">
+           <div class="flex justify-between items-center"><span class="text-xs opacity-50">Перелет</span> <span class="text-sm font-bold opacity-70">18 500 ₽</span>
+           </div>
+           <div class="flex justify-between items-center"><span class="text-xs opacity-50">Отель</span> <span class="text-sm font-bold opacity-70">24 000 ₽</span>
+           </div>
+           <div class="h-8 rounded-lg opacity-40 flex items-center justify-center text-xs font-bold">
+            Забронировать
+           </div>
+          </div>
+         </div>
+        </div>
+       </div><!-- Floating elements -->
+       <div class="absolute -top-8 -left-8 w-20 h-20 rounded-full shadow-xl flex items-center justify-center text-3xl float-animation" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        🎫
+       </div>
+       <div class="absolute -bottom-8 -right-8 w-20 h-20 rounded-full shadow-xl flex items-center justify-center text-3xl float-animation" style="animation-delay: 0.5s; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        🏨
+       </div>
+      </div>
+     </div><!-- Scroll indicator -->
+     <div class="text-center mt-16 fade-in-up">
+      <div class="inline-block animate-bounce">
+       <svg class="w-6 h-6 mx-auto opacity-50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+       </svg>
+      </div>
+     </div>
+    </div>
+   </section><!-- Problem Section -->
+   <section id="problem" class="w-full py-20 px-6">
+    <div class="max-w-6xl w-full mx-auto">
+     <h2 id="problem-title" class="text-4xl md:text-5xl font-bold text-center mb-16">Планируешь сам?</h2>
+	     <div class="grid md:grid-cols-3 gap-8">
+	      <div class="p-8 rounded-2xl bg-white/80 shadow-md border border-white/60">
+       <div class="text-5xl mb-4">
+        ⏰
+       </div>
+       <h3 class="text-2xl font-bold mb-4">Сотни вкладок</h3>
+       <p class="text-lg opacity-80">Поиск билетов, отелей, мест. Хаос и потраченное время</p>
+      </div>
+	      <div class="p-8 rounded-2xl bg-white/80 shadow-md border border-white/60">
+       <div class="text-5xl mb-4">
+        💸
+       </div>
+       <h3 class="text-2xl font-bold mb-4">Неоптимальные траты</h3>
+       <p class="text-lg opacity-80">Платишь больше, теряя скидки и комбо-бронь</p>
+      </div>
+	      <div class="p-8 rounded-2xl bg-white/80 shadow-md border border-white/60">
+       <div class="text-5xl mb-4">
+        😵
+       </div>
+       <h3 class="text-2xl font-bold mb-4">Нервяк и пропущенные точки</h3>
+       <p class="text-lg opacity-80">Маршрут несбалансирован, а половина интересного — мимо</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Solution Section -->
+   <section id="solution" class="w-full py-20 px-6">
+    <div class="max-w-6xl w-full mx-auto">
+     <h2 id="solution-title" class="text-4xl md:text-5xl font-bold text-center mb-6">Готовый план за пару минут</h2>
+     <p class="text-center text-lg opacity-70 mb-14">Вместо хаоса из вкладок — понятный план поездки, который можно сразу бронировать</p>
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+       <div class="inline-block px-3 py-1 mb-4 rounded-full text-xs font-semibold uppercase tracking-wide bg-indigo-50 text-indigo-600">
+        Что входит в готовый план
+       </div>
+       <div class="space-y-5">
+        <div class="flex gap-4 p-4 rounded-2xl bg-white/80 shadow-md border border-white/60">
+         <div class="shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center text-2xl" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+          📅
+         </div>
+         <div>
+          <h3 class="text-2xl font-bold mb-1">Маршрут по интересам</h3>
+          <p class="text-base md:text-lg opacity-80">Не просто топ-10, а план, который подстроен под твой темп, стиль и бюджет</p>
+         </div>
+        </div>
+        <div class="flex gap-4 p-4 rounded-2xl bg-white/80 shadow-md border border-white/60">
+         <div class="shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center text-2xl" style="background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);">
+          🗺️
+         </div>
+         <div>
+          <h3 class="text-2xl font-bold mb-1">План по дням</h3>
+          <p class="text-base md:text-lg opacity-80">Каждый день расписан по шагам: что, где и во сколько — без суеты и беготни</p>
+         </div>
+        </div>
+        <div class="flex gap-4 p-4 rounded-2xl bg-white/80 shadow-md border border-white/60">
+         <div class="shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center text-2xl" style="background: linear-gradient(135deg, #48bb78 0%, #38b2ac 100%);">
+          🏨
+         </div>
+         <div>
+          <h3 class="text-2xl font-bold mb-1">Оптимальная логистика</h3>
+          <p class="text-base md:text-lg opacity-80">Локации выстроены по пути. Минимум времени в дороге — максимум впечатлений в день</p>
+         </div>
+        </div>
+        <div class="flex gap-4 p-4 rounded-2xl bg-white/80 shadow-md border border-white/60">
+         <div class="shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center text-2xl" style="background: linear-gradient(135deg, #f6ad55 0%, #f56565 100%);">
+          💳
+         </div>
+         <div>
+          <h3 class="text-2xl font-bold mb-1">Плати по факту</h3>
+          <p class="text-base md:text-lg opacity-80">Оплачиваешь только нужное количество дней маршрута. Без подписок и скрытых платежей</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="flex justify-center">
+       <div class="relative w-full max-w-sm">
+        <div class="absolute -top-6 -left-6 w-16 h-16 rounded-full opacity-20" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+        <div class="absolute -bottom-10 -right-8 w-24 h-24 rounded-full opacity-20" style="background: linear-gradient(135deg, #f6ad55 0%, #f56565 100%);"></div>
+        <div class="relative rounded-3xl shadow-2xl p-6 text-white" style="background: linear-gradient(145deg, #667eea 0%, #764ba2 40%, #f6ad55 100%);">
+         <div class="flex items-center justify-between mb-4">
+          <div>
+           <p class="text-xs uppercase tracking-wide opacity-80 mb-1">Пример дня</p>
+           <p class="text-lg font-semibold">Барселона • День 2</p>
+          </div>
+          <div class="text-3xl">
+           📱
+          </div>
+         </div>
+         <div class="space-y-3 text-sm md:text-base">
+          <div class="p-3 rounded-2xl bg-white/10 backdrop-blur-sm flex items-start justify-between">
+           <div>
+            <p class="text-xs opacity-80 mb-1">09:00</p>
+            <p class="font-semibold">Саграда Фамилия</p>
+            <p class="text-xs opacity-80">Билеты уже учтены в маршруте</p>
+           </div>
+           <span class="text-lg">⭐</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-white/10 backdrop-blur-sm flex items-start justify-between">
+           <div>
+            <p class="text-xs opacity-80 mb-1">13:30</p>
+            <p class="font-semibold">Обед рядом с парком Гуэль</p>
+            <p class="text-xs opacity-80">Ресторан из подборки под твой бюджет</p>
+           </div>
+           <span class="text-lg">🍽️</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-white/10 backdrop-blur-sm flex items-start justify-between">
+           <div>
+            <p class="text-xs opacity-80 mb-1">18:00</p>
+            <p class="font-semibold">Закат на набережной</p>
+            <p class="text-xs opacity-80">Маршрут уже просчитан по времени</p>
+           </div>
+           <span class="text-lg">🌅</span>
+          </div>
+         </div>
+         <div class="mt-4 pt-4 border-t border-white/20 flex items-center justify-between text-xs uppercase tracking-wide opacity-80">
+          <span>Всё по пути</span>
+          <span>Без переплат и хаоса</span>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Features Section -->
+   <section id="features" class="w-full py-20 px-6">
+    <div class="max-w-6xl w-full mx-auto">
+     <h2 id="features-title" class="text-4xl md:text-5xl font-bold text-center mb-16">Всё в одном месте</h2>
+	     <div class="grid md:grid-cols-4 gap-6">
+	      <div class="p-6 rounded-2xl text-center bg-white/80 shadow-md border border-white/60">
+       <div class="text-4xl mb-3">
+        🏨
+       </div>
+       <h3 class="text-xl font-bold mb-2">Жилье</h3>
+       <p class="opacity-80">Подобрано рядом с точками маршрута</p>
+      </div>
+	      <div class="p-6 rounded-2xl text-center bg-white/80 shadow-md border border-white/60">
+       <div class="text-4xl mb-3">
+        🎫
+       </div>
+       <h3 class="text-xl font-bold mb-2">Билеты</h3>
+       <p class="opacity-80">Сравним цены — выбери лучший вариант</p>
+      </div>
+	      <div class="p-6 rounded-2xl text-center bg-white/80 shadow-md border border-white/60">
+       <div class="text-4xl mb-3">
+        🍽️
+       </div>
+       <h3 class="text-xl font-bold mb-2">Рестораны</h3>
+       <p class="opacity-80">По вкусу и локации, с рейтингами</p>
+      </div>
+	      <div class="p-6 rounded-2xl text-center bg-white/80 shadow-md border border-white/60">
+       <div class="text-4xl mb-3">
+        🎭
+       </div>
+       <h3 class="text-xl font-bold mb-2">Развлечения</h3>
+       <p class="opacity-80">От экскурсий до нестандартных мест</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Mockups Section -->
+	   <section id="mockups" class="w-full py-20 px-6">
+	   <div class="max-w-6xl w-full mx-auto">
+		     <h2 id="mockups-title" class="text-4xl md:text-5xl font-bold text-center mb-4">Как это работает</h2><!-- Key Scenario Flow -->
+         <p class="text-center text-lg opacity-70 mb-12">Три шага от идеи до бронирования — на одном экране</p>
+		     <div class="grid md:grid-cols-2 gap-10 items-center">
+		      <div class="relative">
+		       <div id="mockups-slider" class="relative inline-block rounded-3xl shadow-2xl bg-white p-4 mx-auto overflow-hidden max-w-md">
+		        <div class="relative">
+		         <img src="home.png" alt="Экран сервиса с маршрутом на карте" class="mockups-slide max-w-full h-auto rounded-2xl object-contain">
+		         <img src="placeinfo.png" alt="Второй экран сервиса" class="mockups-slide hidden max-w-full h-auto rounded-2xl object-contain">
+		         <img src="map.png" alt="Третий экран сервиса" class="mockups-slide hidden max-w-full h-auto rounded-2xl object-contain">
+		        </div>
+		        <div class="flex justify-center gap-2 mt-4">
+		         <button type="button" class="mockups-dot w-2.5 h-2.5 rounded-full bg-indigo-600 opacity-100"></button>
+		         <button type="button" class="mockups-dot w-2.5 h-2.5 rounded-full bg-indigo-200 opacity-50"></button>
+		         <button type="button" class="mockups-dot w-2.5 h-2.5 rounded-full bg-indigo-200 opacity-50"></button>
+		        </div>
+	       </div>
+	       <div class="hidden md:block absolute -top-6 -left-6 w-16 h-16 rounded-full opacity-20" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+	       <div class="hidden md:block absolute -bottom-8 -right-10 w-24 h-24 rounded-full opacity-20" style="background: linear-gradient(135deg, #764ba2 0%, #f6ad55 100%);"></div>
+	      </div>
+		      <div class="space-y-6">
+		       <div class="flex gap-4 p-4 rounded-2xl bg-white/80 shadow-md border border-white/60">
+	        <div class="mt-1">
+	         <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold text-white shadow-md" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+	          1
+	         </div>
+	        </div>
+	        <div>
+	         <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-indigo-50 text-indigo-600 mb-2">
+	          Шаг 1
+	         </div>
+	         <h3 class="text-2xl font-bold mb-2">Расскажи о себе</h3>
+	         <p class="text-lg opacity-80 mb-2">Несколько вопросов о твоих предпочтениях: бюджет, даты, интересы. Алгоритм учтет все детали.</p>
+	         <ul class="space-y-1 text-base opacity-80">
+	          <li>✓ Выбор направления</li>
+	          <li>✓ Указание бюджета</li>
+	          <li>✓ Твои интересы (музеи, природа, гастрономия)</li>
+	         </ul>
+	        </div>
+	       </div>
+		       <div class="flex gap-4 p-4 rounded-2xl bg-white/80 shadow-md border border-white/60">
+	        <div class="mt-1">
+	         <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold text-white shadow-md" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+	          2
+	         </div>
+	        </div>
+	        <div>
+	         <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-indigo-50 text-indigo-600 mb-2">
+	          Шаг 2
+	         </div>
+	         <h3 class="text-2xl font-bold mb-2">Персональный маршрут</h3>
+	         <p class="text-lg opacity-80 mb-2">За 2 минуты получаешь полный план поездки: достопримечательности, рестораны, оптимальные маршруты между точками.</p>
+	         <ul class="space-y-1 text-base opacity-80">
+	          <li>✓ День расписан по часам</li>
+	          <li>✓ Учтены расстояния и время</li>
+	          <li>✓ Рекомендации от местных</li>
+	         </ul>
+	        </div>
+	       </div>
+		       <div class="flex gap-4 p-4 rounded-2xl bg-white/80 shadow-md border border-white/60">
+	        <div class="mt-1">
+	         <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold text-white shadow-md" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+	          3
+	         </div>
+	        </div>
+	        <div>
+	         <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-indigo-50 text-indigo-600 mb-2">
+	          Шаг 3
+	         </div>
+	         <h3 class="text-2xl font-bold mb-2">Бронируй за минуту</h3>
+	         <p class="text-lg opacity-80 mb-2">Все необходимое в одном месте: билеты, отель, трансфер. Один клик — и готово. Платишь только за то, что выбрал.</p>
+	         <ul class="space-y-1 text-base opacity-80">
+	          <li>✓ Сравнение цен от разных сервисов</li>
+	          <li>✓ Безопасная оплата</li>
+	          <li>✓ Все бронирования в одном приложении</li>
+	         </ul>
+	        </div>
+	       </div>
+	      </div>
+	     </div>
+	    </div>
+	    <div class="mt-16 text-center">
+	     <h3 class="text-2xl md:text-3xl font-bold mb-4">Начни с одного клика</h3>
+	     <p class="text-lg opacity-80">Создай маршрут и забронируй всё — за 5 минут</p>
+	    </div>
+	   </section><!-- Stats Section -->
+   <section id="stats" class="w-full py-20 px-6">
+    <div class="max-w-6xl w-full mx-auto">
+     <div class="p-12 rounded-3xl shadow-xl text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Почему это работает</h2>
+      <p class="text-lg opacity-70 mb-10">Мы опираемся на реальные паттерны путешествий, а не на абстрактные советы</p>
+      <div class="grid md:grid-cols-3 gap-8">
+       <div class="p-6 rounded-2xl bg-white/80 shadow-md border border-white/60">
+        <div class="text-5xl md:text-6xl font-bold mb-2 gradient-text">
+         2 мин
+        </div>
+        <p class="text-sm uppercase tracking-wide opacity-60 mb-1">Вместо часов поиска</p>
+        <p class="text-lg opacity-80">Алгоритм собирает маршрут за тебя — без десятков вкладок</p>
+       </div>
+       <div class="p-6 rounded-2xl bg-white/80 shadow-md border border-white/60">
+        <div class="text-5xl md:text-6xl font-bold mb-2 gradient-text">
+         50%+
+        </div>
+        <p class="text-sm uppercase tracking-wide opacity-60 mb-1">Путешественников планируют сами</p>
+        <p class="text-lg opacity-80">Мы учитываем привычки самостоятельных туристов и реальные сценарии поездок</p>
+       </div>
+       <div class="p-6 rounded-2xl bg-white/80 shadow-md border border-white/60">
+        <div class="text-5xl md:text-6xl font-bold mb-2 gradient-text">
+         1 место
+        </div>
+        <p class="text-sm uppercase tracking-wide opacity-60 mb-1">Для всего путешествия</p>
+        <p class="text-lg opacity-80">Маршрут, жильё, билеты и идеи — в одном месте, без переключения между сервисами</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- CTA Section -->
+   <section id="final-cta" class="w-full py-20 px-6">
+    <div class="max-w-4xl w-full mx-auto text-center">
+     <h2 class="text-4xl md:text-5xl font-bold mb-6">Собери путешествие мечты</h2>
+     <p class="text-xl mb-8 opacity-80">Попробуй бесплатно — первый день маршрута уже готов</p><button class="px-10 py-4 rounded-full text-xl font-semibold transition-all transform hover:scale-105 shadow-lg"> Создать маршрут </button>
+     <p class="text-sm mt-6 opacity-60">Без карты, без обязательств</p>
+    </div>
+   </section><!-- Footer -->
+   <footer id="footer" class="w-full py-12 px-6 border-t-2">
+    <div class="max-w-6xl w-full mx-auto text-center">
+     <p id="footer-text" class="opacity-60 mb-4">Сервис-помощник для самостоятельных путешествий</p>
+     <p class="text-sm opacity-40">2025 © Central University</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: "#f8f9ff",
+      surface_color: "#ffffff",
+      text_color: "#1a202c",
+      primary_action_color: "#667eea",
+      secondary_action_color: "#764ba2",
+      hero_title: "Собери идеальное путешествие",
+      hero_subtitle: "Маршрут, бронь и советы — за 2 минуты. Без нервов и подписок",
+      cta_button: "Попробовать бесплатно",
+      problem_title: "Планируешь сам?",
+      solution_title: "Готовый план за пару минут",
+      features_title: "Всё в одном месте",
+      mockups_title: "Как это работает",
+      footer_text: "Сервис-помощник для самостоятельных путешествий",
+      font_family: "system-ui",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      const baseFontStack = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+
+      // Apply background color
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      document.body.style.backgroundColor = backgroundColor;
+      document.getElementById('app').style.backgroundColor = backgroundColor;
+
+      // Apply surface colors
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const surfaces = document.querySelectorAll('#problem > div > div > div, #features > div > div > div, #stats > div > div, #mockups .w-72');
+      surfaces.forEach(surface => {
+        surface.style.backgroundColor = surfaceColor;
+      });
+
+      // Hero preview cards
+      const heroCards = document.querySelectorAll('#hero .rounded-2xl.shadow-lg');
+      heroCards.forEach(card => {
+        card.style.backgroundColor = surfaceColor;
+      });
+
+      // Apply text color
+      const textColor = config.text_color || defaultConfig.text_color;
+      document.body.style.color = textColor;
+
+      // Apply primary action color
+      const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const primaryButtons = document.querySelectorAll('#cta-button, #final-cta button, #mockups button');
+      primaryButtons.forEach(button => {
+        button.style.backgroundColor = primaryActionColor;
+        button.style.color = '#ffffff';
+      });
+
+      // Apply secondary action color
+      const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      
+      // Demo button with border
+      const demoButton = document.getElementById('demo-button');
+      if (demoButton) {
+        demoButton.style.borderColor = secondaryActionColor;
+        demoButton.style.color = secondaryActionColor;
+        demoButton.style.borderWidth = '2px';
+        demoButton.style.borderStyle = 'solid';
+      }
+
+      const stepBadges = document.querySelectorAll('#mockups .inline-block.px-4.py-2');
+      stepBadges.forEach(badge => {
+        badge.style.backgroundColor = secondaryActionColor;
+        badge.style.color = '#ffffff';
+      });
+
+      const tagBadges = document.querySelectorAll('#mockups .px-3.py-1');
+      tagBadges.forEach(badge => {
+        badge.style.backgroundColor = secondaryActionColor;
+        badge.style.color = '#ffffff';
+      });
+
+      const savingsBadges = document.querySelectorAll('#mockups .px-2.py-1');
+      savingsBadges.forEach(badge => {
+        badge.style.backgroundColor = secondaryActionColor + '40';
+        badge.style.color = secondaryActionColor;
+      });
+
+      // Apply font family
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+
+      // Apply font sizes
+      document.querySelectorAll('h1').forEach(el => el.style.fontSize = `${baseSize * 3}px`);
+      document.querySelectorAll('h2').forEach(el => el.style.fontSize = `${baseSize * 2.25}px`);
+      document.querySelectorAll('h3').forEach(el => el.style.fontSize = `${baseSize * 1.5}px`);
+      document.querySelectorAll('p, li, label, button').forEach(el => el.style.fontSize = `${baseSize}px`);
+      document.querySelectorAll('.text-sm, .text-xs').forEach(el => el.style.fontSize = `${baseSize * 0.875}px`);
+
+      // Update text content
+      document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+      document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('cta-button').textContent = config.cta_button || defaultConfig.cta_button;
+      document.getElementById('problem-title').textContent = config.problem_title || defaultConfig.problem_title;
+      document.getElementById('solution-title').textContent = config.solution_title || defaultConfig.solution_title;
+      document.getElementById('features-title').textContent = config.features_title || defaultConfig.features_title;
+      document.getElementById('mockups-title').textContent = config.mockups_title || defaultConfig.mockups_title;
+      document.getElementById('footer-text').textContent = config.footer_text || defaultConfig.footer_text;
+    }
+
+	    if (window.elementSdk) {
+	      window.elementSdk.init({
+	        defaultConfig,
+	        onConfigChange,
+	        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                config.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => {
+                config.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+	        mapToEditPanelValues: (config) => new Map([
+	          ['hero_title', config.hero_title || defaultConfig.hero_title],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['cta_button', config.cta_button || defaultConfig.cta_button],
+          ['problem_title', config.problem_title || defaultConfig.problem_title],
+          ['solution_title', config.solution_title || defaultConfig.solution_title],
+          ['features_title', config.features_title || defaultConfig.features_title],
+          ['mockups_title', config.mockups_title || defaultConfig.mockups_title],
+          ['footer_text', config.footer_text || defaultConfig.footer_text]
+	        ])
+	      });
+	    }
+	
+	    function initMockupsSlider() {
+	      const slider = document.getElementById('mockups-slider');
+	      if (!slider) return;
+	
+	      const slides = slider.querySelectorAll('.mockups-slide');
+	      const dots = slider.querySelectorAll('.mockups-dot');
+	      const prev = slider.querySelector('[data-mockup-prev]');
+	      const next = slider.querySelector('[data-mockup-next]');
+	
+	      if (!slides.length) return;
+	
+	      let current = 0;
+	
+	      function showSlide(index) {
+	        current = (index + slides.length) % slides.length;
+	
+	        slides.forEach((slide, i) => {
+	          if (i === current) {
+	            slide.classList.remove('hidden');
+	          } else {
+	            slide.classList.add('hidden');
+	          }
+	        });
+	
+	        dots.forEach((dot, i) => {
+	          if (i === current) {
+	            dot.classList.remove('bg-indigo-200', 'opacity-50');
+	            dot.classList.add('bg-indigo-600', 'opacity-100');
+	          } else {
+	            dot.classList.add('bg-indigo-200', 'opacity-50');
+	            dot.classList.remove('bg-indigo-600', 'opacity-100');
+	          }
+	        });
+	      }
+	
+	      prev && prev.addEventListener('click', () => showSlide(current - 1));
+	      next && next.addEventListener('click', () => showSlide(current + 1));
+	
+	      dots.forEach((dot, index) => {
+	        dot.addEventListener('click', () => showSlide(index));
+	      });
+	
+	      showSlide(0);
+	    }
+	
+	    document.addEventListener('DOMContentLoaded', initMockupsSlider);
+	
+	    // Initialize with default config
+	    onConfigChange(defaultConfig);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ac682a331930a53',t:'MTc2NTQ3MjEzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
