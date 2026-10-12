@@ -1,150 +1,446 @@
-
-<!DOCTYPE html>
-<html lang="ru">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Анастасия Гисина — Analytics Lead, ментор и создатель цифровых продуктов.">
-  <title>Анастасия Гисина</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #F3ECE2;
-      color: #1C1A41;
-      line-height: 1.6;
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anastasia Gisina — Product Analytics</title>
+<meta name="description" content="Anastasia Gisina, Head of Product Analytics at X5 Digital. Writing, code, mentoring and resume.">
+<meta property="og:title" content="Anastasia Gisina — Product Analytics">
+<meta property="og:description" content="Head of Product Analytics at X5 Digital. Writing, code, mentoring and resume.">
+<meta property="og:image" content="https://tpofd.github.io/images/avatar.jpg">
+<meta property="og:url" content="https://tpofd.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#faf9f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151513" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="images/icon.png">
+<script>
+  // pick the language before first paint: ?lang= → saved choice → browser language → English
+  (function () {
+    var q = new URLSearchParams(location.search).get("lang"), saved = null;
+    try { saved = localStorage.getItem("lang"); } catch (e) {}
+    var lang = q || saved || ((navigator.language || "").toLowerCase().indexOf("ru") === 0 ? "ru" : "en");
+    document.documentElement.lang = lang === "ru" ? "ru" : "en";
+  })();
+</script>
+<style>
+  :root {
+    --bg: #faf9f6; --surface: #ffffff; --ink: #1d1c19; --ink-2: #4a4943; --muted: #7a7972;
+    --line: #e4e2dc; --accent: #2f5bd3; --accent-ink: #ffffff; --chip: #f0eee8;
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151513; --surface: #1d1d1a; --ink: #ecebe6; --ink-2: #c3c1b9; --muted: #8f8d85;
+      --line: #2f2e2a; --accent: #8aa8ff; --accent-ink: #10131c; --chip: #262622;
     }
-    header, footer {
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      margin: 0;
-    }
-    header p {
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-    }
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0.5rem 1rem 2rem 1rem;
-    }
-    h2 {
-      font-size: 1.6rem;
-      margin-top: 2rem;
-      color: #1C1A41;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    a {
-      color: #1C1A41;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .contact a {
-      display: inline-block;
-      margin: 0.5rem 1rem 0.5rem 0;
-      padding: 0.4rem 1rem;
-      border: 1px solid #1C1A41;
-      border-radius: 4px;
-      font-weight: 600;
-    }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      header p {
-        font-size: 1rem;
-      }
-      h2 {
-        font-size: 1.3rem;
-      }
-    }
-  </style>
-    <!-- Yandex.Metrika counter -->
-  <script type="text/javascript" >
-     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-     m[i].l=1*new Date();
-     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-  
-     ym(71439325, "init", {
-          clickmap:true,
-          trackLinks:true,
-          accurateTrackBounce:true,
-          webvisor:true
-     });
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/71439325" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
+  }
+  :root[data-theme="dark"] {
+    --bg: #151513; --surface: #1d1d1a; --ink: #ecebe6; --ink-2: #c3c1b9; --muted: #8f8d85;
+    --line: #2f2e2a; --accent: #8aa8ff; --accent-ink: #10131c; --chip: #262622;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  /* language switch: everything bilingual is a pair of [data-l] siblings */
+  html[lang="en"] [data-l="ru"], html[lang="ru"] [data-l="en"] { display: none; }
+
+  header.top { position: sticky; top: 0; z-index: 5; background: var(--bg);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; gap: 20px; height: 56px; }
+  .brand { font-family: var(--serif); font-size: 18px; color: var(--ink); font-weight: 700; white-space: nowrap; }
+  nav { display: flex; gap: 16px; margin-left: auto; font-size: 13.5px; }
+  nav a { color: var(--ink-2); white-space: nowrap; }
+  @media (max-width: 900px) { nav { display: none; } .lang { margin-left: auto; } }
+  .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; flex: none; }
+  .lang button { border: 0; background: transparent; color: var(--muted); font: 600 12px/1 var(--sans);
+    padding: 7px 10px; cursor: pointer; letter-spacing: .04em; }
+  html[lang="en"] .lang [data-set="en"], html[lang="ru"] .lang [data-set="ru"] { background: var(--ink); color: var(--bg); }
+
+  .hero { display: grid; grid-template-columns: 176px 1fr; gap: 40px; align-items: center; padding: 72px 0 56px; }
+  .hero img { width: 176px; height: 176px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
+  h1 { font-family: var(--serif); font-size: 42px; line-height: 1.1; margin: 0 0 8px; letter-spacing: -.01em; }
+  .role { font-size: 18px; color: var(--ink-2); margin: 0 0 14px; }
+  .lead { color: var(--ink-2); margin: 0 0 20px; max-width: 58ch; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: 14px; font-weight: 500; }
+  .btn:hover { border-color: var(--ink-2); text-decoration: none; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+
+  section { padding: 52px 0; border-top: 1px solid var(--line); scroll-margin-top: 56px; }
+  h2 { font-family: var(--serif); font-size: 28px; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+  h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 32px 0 12px; font-weight: 600; }
+
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .card { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; color: var(--ink); }
+  .card:hover { border-color: var(--ink-2); text-decoration: none; }
+  .card .k { font-size: 12px; color: var(--muted); margin-bottom: 6px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .card .t { font-weight: 600; margin-bottom: 4px; }
+  .card .d { color: var(--ink-2); font-size: 14px; }
+  .card.wide { grid-column: 1 / -1; }
+  .cards.three { grid-template-columns: repeat(3, 1fr); }
+  .cards.three .t { font-family: var(--serif); font-size: 17px; line-height: 1.35; margin-bottom: 8px; }
+  .card:not([href]) { cursor: default; }
+  .card:not([href]):hover { border-color: var(--line); }
+  .tag { background: var(--chip); border-radius: 6px; padding: 1px 7px; }
+
+  .list { list-style: none; padding: 0; margin: 0; }
+  .list li { padding: 12px 0; border-bottom: 1px solid var(--line); display: flex; gap: 16px; justify-content: space-between; align-items: baseline; }
+  .list li:last-child { border-bottom: 0; }
+  .list a { color: var(--ink); font-weight: 500; }
+  .list a::after { content: "\00a0→"; color: var(--muted); font-weight: 400; }
+  .list a:hover { color: var(--accent); text-decoration: none; }
+  .list a:hover::after { color: var(--accent); }
+  .list .meta { color: var(--muted); font-size: 13px; white-space: nowrap; }
+
+  .topics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 28px; padding: 0; margin: 0 0 28px; list-style: none; }
+  .topics li { padding-left: 22px; position: relative; color: var(--ink-2); }
+  .topics li::before { content: ""; position: absolute; left: 2px; top: .7em; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
+  .cta { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px;
+    display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  .cta p { margin: 0; color: var(--ink-2); max-width: 52ch; }
+
+  .exp { display: grid; grid-template-columns: 150px 1fr; gap: 4px 24px; }
+  .exp .when { color: var(--muted); font-size: 14px; padding-top: 14px; }
+  .exp .what { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .exp .what:last-of-type { border-bottom: 0; }
+  .exp .what b { font-weight: 600; }
+  .exp .what span { color: var(--ink-2); }
+  .exp .what p { margin: 4px 0 0; color: var(--ink-2); font-size: 14px; }
+
+  .resume { display: flex; gap: 12px; flex-wrap: wrap; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .theme { background: none; border: 0; color: var(--muted); font: inherit; cursor: pointer; padding: 0; }
+
+  @media (max-width: 720px) {
+    nav { display: none; }
+    .lang { margin-left: auto; }
+    .hero { grid-template-columns: 1fr; gap: 20px; padding: 36px 0 32px; }
+    .hero img { width: 112px; height: 112px; }
+    h1 { font-size: 34px; }
+    .cards, .cards.three, .topics { grid-template-columns: 1fr; }
+    .exp { grid-template-columns: 1fr; }
+    .exp .when { padding-top: 12px; }
+    .exp .what { padding-top: 0; }
+    .list li { flex-direction: column; gap: 2px; }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <img src="images/avatar.jpg" alt="Анастасия Гисина" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
-    <h1>Анастасия Гисина</h1>
-    <p>Руководитель продуктовой аналитики · Ментор и автор</p>
-  </header>
 
-  <main>
-    <h2>👋 О себе</h2>
-    <p>Привет, я Настя — Analytics Lead и человек, который превращает аналитику из поддержки в стратегический актив.</p>
-    <p>За 5+ лет я выстроила системы отчётности с нуля, провела десятки продуктовых исследований и помогла командам принимать решения, которым доверяют. Руководила аналитикой в логистике, e-commerce и B2B, запускала архитектуру датамартов и настраивала A/B-тесты как продукт.</p>
-    <p>Моя экспертиза — на стыке аналитики, продуктов и операций. А мой подход — делать так, чтобы данные были понятны, полезны и вовремя.</p>
-    <p>📮 Пишу об этом в Telegram: <a href="https://t.me/givemeagold">@givemeagold</a></p>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <span data-l="en">Anastasia Gisina</span><span data-l="ru">Анастасия Гисина</span>
+    </a>
+    <nav>
+      <a href="#thinking"><span data-l="en">How I think</span><span data-l="ru">Как я думаю</span></a>
+      <a href="#writing"><span data-l="en">Writing &amp; code</span><span data-l="ru">Статьи и код</span></a>
+      <a href="#teaching"><span data-l="en">Teaching</span><span data-l="ru">Преподавание</span></a>
+      <a href="#mentoring"><span data-l="en">Mentoring</span><span data-l="ru">Менторство</span></a>
+      <a href="#experience"><span data-l="en">Experience</span><span data-l="ru">Опыт</span></a>
+      <a href="#resume"><span data-l="en">Resume</span><span data-l="ru">Резюме</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set="en">EN</button>
+      <button type="button" data-set="ru">RU</button>
+    </div>
+  </div>
+</header>
 
-    <h2>🎯 Что я делаю</h2>
-    <ul>
-      <li>Руковожу группой аналитиков (продукт + маркетинг) в Dostavista</li>
-      <li>Строю BI-систему: от единой методологии метрик до архитектуры витрин</li>
-      <li>Настраиваю A/B-процессы: гипотезы, расчёты, разборы с командами</li>
-      <li>Провожу стратегические и продуктовые исследования</li>
-      <li>Развиваю культуру data-driven: витрины, обучение, обратная связь, UX отчетов, культура принятия решений</li>
-    </ul>
+<main class="wrap">
 
-    <h2>🏆 Мои ключевые достижения</h2>
-    <ul>
-      <li>Построила метрики B2B-продукта доставки с нуля, добилась положительной юнит-экономики</li>
-      <li>Внедрила A/B-тестирование как процесс, а не хаос</li>
-      <li>В 17 лет вступила в сборную России по хакатонам, выиграла крупнейшие хакатоны Европы и СНГ: Junction, Цифровой прорыв</li>
-      <li>Выступаю, менторю, делюсь практиками в канале</li>
-    </ul>
+  <div class="hero">
+    <img src="images/avatar.jpg" alt="Anastasia Gisina">
+    <div>
+      <h1><span data-l="en">Anastasia Gisina</span><span data-l="ru">Анастасия Гисина</span></h1>
+      <p class="role">
+        <span data-l="en">Head of Product Analytics at X5 Digital</span>
+        <span data-l="ru">Руководитель продуктовой аналитики в X5 Digital</span>
+      </p>
+      <p class="lead">
+        <span data-l="en">Being data-driven is not about reports and a million metrics. It's about honesty: with the numbers,
+          the team and yourself. I build analytics that teams trust: metrics people make decisions on, experiments with
+          success criteria agreed up front, and a fast answer to “why did the metric move?”</span>
+        <span data-l="ru">Быть дата-дривен — это не про отчёты и миллион метрик. Это про честность: с цифрами, с командой
+          и с самим собой. Строю аналитику, которой доверяют: метрики, по которым принимают решения, эксперименты
+          с критериями успеха до запуска и быстрый ответ на вопрос «почему сдвинулась метрика».</span>
+      </p>
+      <div class="links">
+        <a class="btn primary" href="https://t.me/givemeagold" target="_blank" rel="noopener">
+          <span data-l="en">Telegram channel</span><span data-l="ru">Telegram-канал</span></a>
+        <a class="btn" href="https://www.linkedin.com/in/anastasiagisina/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/tpofd" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="#resume"><span data-l="en">Resume</span><span data-l="ru">Резюме</span></a>
+      </div>
+    </div>
+  </div>
 
-    <h2>🌟 Самое читаемое</h2>
-    <ul>
-      <li><a href="https://t.me/givemeagold/199" target="_blank">🔥 Устала. Сгорела. Решила лепить себя заново — буквально</a></li>
-      <li><a href="https://t.me/givemeagold/209" target="_blank">📈 Аналитическая зрелость ≠ крутой и гибкий дашборд в Tableau со всеми фильтрами</a></li>
-      <li><a href="https://t.me/givemeagold/208" target="_blank">😐 Как не выгореть, если у тебя день расписан по 15 минут и ты живёшь в календаре</a></li>
-      <li><a href="https://t.me/givemeagold/214" target="_blank"> 🐍📊 Retention в одну строку (ну почти)</a></li>
-    </ul>
+  <section id="thinking">
+    <h2><span data-l="en">How I think</span><span data-l="ru">Как я думаю</span></h2>
+    <p class="sub">
+      <span data-l="en">Three things I keep coming back to. Each one has a longer post behind it.</span>
+      <span data-l="ru">Три мысли, к которым я возвращаюсь. За каждой — пост, где она разобрана.</span>
+    </p>
+    <div class="cards three">
+      <a class="card" href="https://t.me/givemeagold/236" target="_blank" rel="noopener">
+        <div class="k"><span data-l="en">On data-driven culture</span><span data-l="ru">Про data-driven</span></div>
+        <div class="t"><span data-l="en">If you look for proof of your idea in the numbers, you will find it.</span>
+          <span data-l="ru">Если искать в цифрах подтверждение своей идеи, оно там обязательно найдётся.</span></div>
+        <div class="d"><span data-l="en">That's why success criteria are agreed before the experiment, not after, and why
+          “we were wrong” has to be a sentence people can say out loud.</span>
+          <span data-l="ru">Поэтому критерии успеха договариваются до эксперимента, а не после, а «мы ошиблись» должно быть
+          фразой, которую можно произнести вслух.</span></div>
+      </a>
+      <a class="card" href="https://t.me/givemeagold/247" target="_blank" rel="noopener">
+        <div class="k"><span data-l="en">On leading a team</span><span data-l="ru">Про лидство</span></div>
+        <div class="t"><span data-l="en">Delegation is not about control, and not even about trust. It's about growth.</span>
+          <span data-l="ru">Делегирование — не про контроль и даже не про доверие. Это про рост.</span></div>
+        <div class="d"><span data-l="en">When the lead leaves the room, the team should keep working. That means handing over
+          even the small tasks, and letting people fix their own mistakes.</span>
+          <span data-l="ru">Когда лид выходит из комнаты, команда должна продолжать работать. Значит, отдавать даже мелкие задачи
+          и давать людям самим исправлять свои ошибки.</span></div>
+      </a>
+      <a class="card" href="https://t.me/givemeagold/246" target="_blank" rel="noopener">
+        <div class="k"><span data-l="en">On AI at work</span><span data-l="ru">Про ИИ в работе</span></div>
+        <div class="t"><span data-l="en">AI doesn't make you smarter. It makes it obvious where you're unclear.</span>
+          <span data-l="ru">ИИ не делает умнее. Он делает заметнее, где ты не додумал.</span></div>
+        <div class="d"><span data-l="en">Replace “AI” with “a junior analyst” and the same skills show up: state the goal,
+          give context, check the result, give feedback.</span>
+          <span data-l="ru">Замените «ИИ» на «стажёр» — и всплывут те же навыки: назвать цель, дать контекст, проверить результат,
+          дать обратную связь.</span></div>
+      </a>
+    </div>
+  </section>
 
-    <h2>🎁 Полезные материалы</h2>
-    <ul>
+  <section id="writing">
+    <h2><span data-l="en">Writing &amp; code</span><span data-l="ru">Статьи и код</span></h2>
+    <p class="sub">
+      <span data-l="en">What I learn at work, written down. The Telegram channel is in Russian, LinkedIn is in English.</span>
+      <span data-l="ru">Пишу о том, чему учусь на работе. Telegram — на русском, LinkedIn — на английском.</span>
+    </p>
+
+    <h3><span data-l="en">Code</span><span data-l="ru">Код</span></h3>
+    <div class="cards">
+      <a class="card wide" href="https://github.com/tpofd/conversion-factor-analysis" target="_blank" rel="noopener">
+        <div class="k"><span class="tag">Python</span><span>GitHub</span></div>
+        <div class="t">conversion-factor-analysis</div>
+        <div class="d">
+          <span data-l="en">Why did conversion move? A factor decomposition of a funnel step into commercial and product
+            factors, with bootstrap intervals and validation on synthetic data where the true answer is known.</span>
+          <span data-l="ru">Почему сдвинулась конверсия? Факторное разложение шага воронки на коммерческие и продуктовые
+            факторы с бутстрэп-интервалами и проверкой на синтетике, где правильный ответ известен заранее.</span>
+        </div>
+      </a>
+    </div>
+
+    <h3><span data-l="en">Selected posts</span><span data-l="ru">Избранные посты</span></h3>
+    <ul class="list">
       <li>
-        <a href="https://miro.com/app/board/uXjVI2dOqmQ=/?share_link_id=705288048981" target="_blank" onclick="ym(12345678, 'reachGoal', 'download_materials')">
-          🧩 Пример карты аналитических событий в Miro — бери как шаблон
-        </a>
+        <a href="https://t.me/givemeagold/236" target="_blank" rel="noopener">
+          <span data-l="en">When data-driven turns into a circus</span><span data-l="ru">Когда дата-дривен превращается в клоунаду</span></a>
+        <span class="meta">Telegram · 2025</span>
       </li>
       <li>
-        <a href="https://tpofd.notion.site/120ebcbc5f5242a0bd1fc15878276c56" target="_blank" onclick="ym(12345678, 'reachGoal', 'download_materials')">
-          🤤 Вопросы с интересных собеседований
-        </a>
+        <a href="https://t.me/givemeagold/247" target="_blank" rel="noopener">
+          <span data-l="en">Why delegating is so hard</span><span data-l="ru">Почему так сложно даётся делегирование</span></a>
+        <span class="meta">Telegram · 2026</span>
+      </li>
+      <li>
+        <a href="https://t.me/givemeagold/246" target="_blank" rel="noopener">
+          <span data-l="en">Using AI to train soft skills</span><span data-l="ru">ИИ помогает развивать soft skills</span></a>
+        <span class="meta">Telegram · 2026</span>
+      </li>
+      <li>
+        <a href="https://t.me/givemeagold/209" target="_blank" rel="noopener">
+          <span data-l="en">Analytics maturity is not a fancy dashboard</span><span data-l="ru">Аналитическая зрелость ≠ крутой дашборд</span></a>
+        <span class="meta">Telegram · 2025</span>
+      </li>
+      <li>
+        <a href="https://t.me/givemeagold/198" target="_blank" rel="noopener">
+          <span data-l="en">The one metric to rule them all</span><span data-l="ru">Царь-метрика</span></a>
+        <span class="meta">Telegram · 2025</span>
+      </li>
+      <li>
+        <a href="https://t.me/givemeagold/237" target="_blank" rel="noopener">
+          <span data-l="en">My last day at Dostavista</span><span data-l="ru">Последний рабочий день в Достависте</span></a>
+        <span class="meta">Telegram · 2025</span>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7514315058865340417/" target="_blank" rel="noopener">
+          <span data-l="en">Intro: my first team gave me a mug</span><span data-l="ru">Знакомство: первая команда подарила мне кружку</span></a>
+        <span class="meta">LinkedIn · 2026</span>
       </li>
     </ul>
-    <p>Подпишись на <a href="https://t.me/givemeagold" target="_blank">@givemeagold</a>, если хочешь быть в курсе новых шаблонов, чеклистов и фреймворков.</p>
 
-    <h2>📄 Скачать резюме</h2>
-    <a href="/resume_gisina.pdf" download onclick="ym(71439325, 'reachGoal', 'download_resume')" style="display:inline-block; margin-top:1rem; padding:0.6rem 1.2rem; background:#1C1A41; color:#F3ECE2; border-radius:6px; font-weight:600;">Скачать резюме</a>
-  </main>
+    <h3><span data-l="en">Templates</span><span data-l="ru">Шаблоны</span></h3>
+    <div class="cards">
+      <a class="card" href="https://miro.com/app/board/uXjVI2dOqmQ=/?share_link_id=705288048981" target="_blank" rel="noopener">
+        <div class="k"><span class="tag">Miro</span></div>
+        <div class="t"><span data-l="en">Analytics event map</span><span data-l="ru">Карта аналитических событий</span></div>
+        <div class="d"><span data-l="en">An example tracking plan, use it as a template. In Russian.</span><span data-l="ru">Пример карты событий, бери как шаблон.</span></div>
+      </a>
+      <a class="card" href="https://tpofd.notion.site/120ebcbc5f5242a0bd1fc15878276c56" target="_blank" rel="noopener">
+        <div class="k"><span class="tag">Notion</span></div>
+        <div class="t"><span data-l="en">Questions from interesting interviews</span><span data-l="ru">Вопросы с интересных собеседований</span></div>
+        <div class="d"><span data-l="en">Interview questions I've collected. In Russian.</span><span data-l="ru">Вопросы с собеседований, которые я собрала.</span></div>
+      </a>
+    </div>
 
-  <footer>
-    &copy; 2024 Анастасия Гисина — сайт с душой и аналитикой ✨
-  </footer>
+  </section>
+
+  <section id="teaching">
+    <h2><span data-l="en">Teaching &amp; speaking</span><span data-l="ru">Преподавание и выступления</span></h2>
+    <p class="sub">
+      <span data-l="en">Where I explain the same things to more people at once.</span>
+      <span data-l="ru">Где я рассказываю то же самое, но сразу многим.</span>
+    </p>
+    <div class="cards three">
+      <div class="card">
+        <div class="k"><span class="tag">OTUS</span><span data-l="en">course lead</span><span data-l="ru">руководитель курса</span></div>
+        <div class="t"><span data-l="en">AI for Analytics and Data</span><span data-l="ru">ИИ для аналитики и работы с данными</span></div>
+        <div class="d"><span data-l="en">First cohort in 2026. Before that, instructor in product analytics courses.</span>
+          <span data-l="ru">Первый поток в 2026. До этого — преподаватель на курсах продуктовой аналитики.</span></div>
+      </div>
+      <a class="card" href="https://t.me/givemeagold/232" target="_blank" rel="noopener">
+        <div class="k"><span class="tag">Delta Day 2025</span><span data-l="en">talk</span><span data-l="ru">доклад</span></div>
+        <div class="t"><span data-l="en">How to grow a data-driven culture and know it's working</span>
+          <span data-l="ru">Как растить data-driven в компании и понять, что вырастили</span></div>
+        <div class="d"><span data-l="en">A conference talk for analytics and product leads.</span>
+          <span data-l="ru">Доклад для лидов аналитики и продукта.</span></div>
+      </a>
+      <div class="card">
+        <div class="k"><span class="tag">Russian Hack Team</span>2019–2023</div>
+        <div class="t"><span data-l="en">7 first places at data science hackathons</span><span data-l="ru">7 первых мест на хакатонах по данным</span></div>
+        <div class="d"><span data-l="en">Including Junction and Digital Breakthrough, the largest hackathons in Europe and the CIS.</span>
+          <span data-l="ru">В том числе Junction и «Цифровой прорыв», крупнейшие хакатоны Европы и СНГ.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mentoring">
+    <h2><span data-l="en">Mentoring &amp; consulting</span><span data-l="ru">Менторство и консультации</span></h2>
+    <p class="sub">
+      <span data-l="en">One-on-one sessions for analysts and analytics leads.</span>
+      <span data-l="ru">Индивидуальные встречи для аналитиков и лидов аналитики.</span>
+    </p>
+    <ul class="topics">
+      <li><span data-l="en">Career growth: from analyst to senior and lead</span><span data-l="ru">Карьерный рост: от аналитика до сеньора и лида</span></li>
+      <li><span data-l="en">Interview preparation</span><span data-l="ru">Подготовка к собеседованиям</span></li>
+      <li><span data-l="en">Metrics, experiments and analytics processes</span><span data-l="ru">Метрики, эксперименты и процессы аналитики</span></li>
+      <li><span data-l="en">Building analytics from scratch in a company</span><span data-l="ru">Аналитика в компании с нуля</span></li>
+    </ul>
+    <div class="cta">
+      <p>
+        <span data-l="en">Message me on Telegram with a couple of lines about your situation, and we'll find a time.</span>
+        <span data-l="ru">Напишите в Telegram пару строк о своей ситуации, и договоримся о встрече.</span>
+      </p>
+      <a class="btn primary" href="https://t.me/agisina" target="_blank" rel="noopener">Telegram @agisina</a>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2><span data-l="en">Experience</span><span data-l="ru">Опыт</span></h2>
+    <p class="sub">
+      <span data-l="en">6+ years in product and business analytics, from BI developer to head of a team. The full version is in the resume.</span>
+      <span data-l="ru">6+ лет в продуктовой и бизнес-аналитике: от BI-разработчика до руководителя команды. Подробно — в резюме.</span>
+    </p>
+    <div class="exp">
+      <div class="when"><span data-l="en">2025 – now</span><span data-l="ru">2025 — н. в.</span></div>
+      <div class="what">
+        <b>X5 Digital</b> · <span data-l="en">Head of Product Analytics</span><span data-l="ru">Руководитель продуктовой аналитики</span>
+        <p data-l="en">Lead and grow the product analytics team for the app's key scenarios. Built daily diagnostics that split a
+          conversion change into commercial and product factors, and the rules for A/B tests that share screens across teams:
+          guardrail metrics, a shared test calendar, an analyst who owns each screen.</p>
+        <p data-l="ru">Руковожу и развиваю команду продуктовой аналитики ключевых сценариев приложения. Построила ежедневную
+          диагностику, которая раскладывает изменение конверсии на коммерческие и продуктовые факторы, и правила для
+          A/B-тестов на общих экранах: обязательные метрики, общий календарь тестов, аналитик-владелец экрана.</p>
+      </div>
+      <div class="when"><span data-l="en">2024 – 2025</span><span data-l="ru">2024 — 2025</span></div>
+      <div class="what">
+        <b><span data-l="en">Dostavista</span><span data-l="ru">Достависта</span></b> · <span data-l="en">Analytics Lead</span><span data-l="ru">Лид аналитики</span>
+        <p data-l="en">Built the analytics function: team, core metrics, BI stack, experimentation framework.</p>
+        <p data-l="ru">Выстроила функцию аналитики: команда, ключевые метрики, BI-стек, процесс экспериментов.</p>
+      </div>
+      <div class="when"><span data-l="en">2023 – 2024</span><span data-l="ru">2023 — 2024</span></div>
+      <div class="what">
+        <b><span data-l="en">SberMarket</span><span data-l="ru">СберМаркет</span></b> · <span data-l="en">Senior Product Analyst</span><span data-l="ru">Старший продуктовый аналитик</span>
+        <p data-l="en">Analytics for a new B2B product from scratch: metrics, unit economics, A/B tests.</p>
+        <p data-l="ru">Аналитика нового B2B-продукта с нуля: метрики, юнит-экономика, A/B-тесты.</p>
+      </div>
+      <div class="when"><span data-l="en">2022 – 2023</span><span data-l="ru">2022 — 2023</span></div>
+      <div class="what">
+        <b>Ozon</b> · <span data-l="en">Product Analyst</span><span data-l="ru">Продуктовый аналитик</span>
+        <p data-l="en">Moved 100+ team reports to Superset; a self-service data tool that saved the team 20+ hours a week.</p>
+        <p data-l="ru">Перенесла 100+ отчётов команды в Superset; self-service инструмент, который экономил команде 20+ часов в неделю.</p>
+      </div>
+      <div class="when"><span data-l="en">2019 – 2021</span><span data-l="ru">2019 — 2021</span></div>
+      <div class="what">
+        <b>Palindrome, SimbirSoft</b> · <span data-l="en">BI and business analytics</span><span data-l="ru">BI и бизнес-аналитика</span>
+        <p data-l="en">Client dashboards, Power BI sales analytics, ClickHouse data marts.</p>
+        <p data-l="ru">Клиентские дашборды, аналитика продаж в Power BI, витрины в ClickHouse.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2><span data-l="en">Resume</span><span data-l="ru">Резюме</span></h2>
+    <p class="sub">
+      <span data-l="en">One page, PDF.</span>
+      <span data-l="ru">Одна страница, PDF.</span>
+    </p>
+    <div class="resume">
+      <a class="btn primary" href="resume_gisina_en.pdf" target="_blank" rel="noopener">
+        <span data-l="en">Resume in English</span><span data-l="ru">Резюме на английском</span></a>
+      <a class="btn" href="resume_gisina_ru.pdf" target="_blank" rel="noopener">
+        <span data-l="en">Resume in Russian</span><span data-l="ru">Резюме на русском</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 <span data-l="en">Anastasia Gisina</span><span data-l="ru">Анастасия Гисина</span></span>
+    <button class="theme" type="button" id="theme">
+      <span data-l="en">Switch theme</span><span data-l="ru">Сменить тему</span></button>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var titles = { en: "Anastasia Gisina — Product Analytics", ru: "Анастасия Гисина — продуктовая аналитика" };
+    function setLang(l) {
+      root.lang = l;
+      document.title = titles[l];
+      document.querySelectorAll(".lang button").forEach(function (b) {
+        b.setAttribute("aria-pressed", b.getAttribute("data-set") === l ? "true" : "false");
+      });
+      try { localStorage.setItem("lang", l); } catch (e) {}
+    }
+    setLang(root.lang === "ru" ? "ru" : "en");
+    document.querySelectorAll(".lang button").forEach(function (b) {
+      b.addEventListener("click", function () { setLang(b.getAttribute("data-set")); });
+    });
+
+    try { var t = localStorage.getItem("theme"); if (t) root.setAttribute("data-theme", t); } catch (e) {}
+    document.getElementById("theme").addEventListener("click", function () {
+      var cur = root.getAttribute("data-theme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      var next = cur === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  })();
+</script>
 </body>
 </html>
